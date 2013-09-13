@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * implements hook_init().
+ */
+function labs_trips_init() {
+  $path = $_GET['q'];
+  if ($path == 'other-trips') {
+    //TODO find something better
+    sleep(10);
+  }
+}
