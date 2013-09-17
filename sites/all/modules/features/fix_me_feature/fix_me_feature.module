@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Fix Me Feature feature.
+ */
+
+include_once 'fix_me_feature.features.inc';
