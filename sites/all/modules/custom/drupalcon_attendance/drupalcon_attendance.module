@@ -1,0 +1,63 @@
+<?php
+
+define('ATTENDING_FLAG', 1);
+
+/**
+ * Implements hook_menu().
+ */
+function drupalcon_attendance_menu() {
+  $items['drupalcon/attendance/%'] = array(
+    'page callback' => 'drupalcon_attendance_return_json',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK
+  );
+
+  return $items;
+}
+
+/**
+ *  Implements hook_node_view().
+ */
+function drupalcon_attendance_node_view($node, $view_mode, $langcode) {
+  if ($view_mode == 'full') {
+    $count = drupalcon_attendance_count($node->nid); 
+    $node->content['drupalcon_attendance'] = array(
+      "#markup" => '<div class="attendance"><span class="attendance_number">'. t('%count Attending', array('count' => $count)) . '</div>',
+      "#weight" => -1,
+      '#attached' => array(
+         'js' => array(drupal_get_path('module', 'drupalcon_attendance') . '/drupalcon_attendance.js')
+      )
+    );
+
+    dsm($node);
+  }
+}
+
+/**
+ * Gets number of attendees in Drupalcons.
+ */
+function drupalcon_attendance_count($nid) {
+   $efq = new EntityFieldQuery();
+   $efq->entityCondition('entity_type', 'flagging')
+       ->propertyCondition('fid', ATTENDING_FLAG);
+
+   $results = $efq->execute();
+
+   if (empty($results['flagging'])) {
+     $count = 0;
+   }
+   else {
+     $count = count($results['flagging']);
+   }
+
+   return $count;
+}
+
+/**
+ * Callback function to return number of attendees
+ */
+function drupalcon_attendance_return_json($nid) {
+  print drupal_json(drupalcon_attendance_count($nid));
+  drupal_exit();
+}
