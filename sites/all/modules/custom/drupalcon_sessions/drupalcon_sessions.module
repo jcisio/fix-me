@@ -6,7 +6,7 @@
 function drupalcon_sessions_block_info() {
 
   $blocks['sessions'] = array(
-    'info' => t('Sessions'),
+    'info' => t('Sessions custom block'),
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -49,6 +49,8 @@ function drupalcon_show_sessions_menu() {
     $nodes = node_load_multiple(array_keys($results['node']));
     $content = drupal_get_form('drupalcon_sessions_jumpmenu', $nodes);
   }
+
+  $content = t('Generated on !date', array('!date' => format_date(time())));
 
   $timer = timer_read('drupalcon_sessions_with_block');
 
