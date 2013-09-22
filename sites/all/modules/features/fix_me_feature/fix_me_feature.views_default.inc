@@ -90,6 +90,10 @@ function fix_me_feature_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['path'] = 'news';
   $export['news'] = $view;
 
   $view = new view();

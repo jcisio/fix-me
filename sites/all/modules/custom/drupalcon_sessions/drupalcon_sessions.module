@@ -29,6 +29,7 @@ function drupalcon_sessions_block_view($delta = '')  {
   return $block;
 }
 
+
 /**
  * Renders block content for sessions jumpmenu
  * @return string with block contet

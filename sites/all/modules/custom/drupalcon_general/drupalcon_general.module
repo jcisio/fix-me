@@ -5,11 +5,42 @@
  */
 function drupalcon_general_init() {
   $path = $_GET['q'];
-  if ($path == 'other-trips') {
-    //TODO find something better
-    sleep(10);
+
+  // current drupalcon is closed and path is other-cons
+  if ($path = 'other-cons' && variable_get('drupalcon_closed', TRUE)) {
+    // wait for 0.2 seconds
+    usleep(200000);
   }
 }
+
+/**
+ * implements hook_block_info().
+ */
+function drupalcon_general_block_info() {
+
+  $blocks['drupalcon_weather'] = array(
+    'info' => t('Drupalcon Weather'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ * implements hook_block_info().
+ */
+function drupalcon_general_block_view($delta) {
+
+  switch ($delta) {
+    case 'drupalcon_weather':
+      $block['subject'] = t('Weather');
+      $block['content'] = drupalcon_show_weather();
+      break;
+  }
+
+  return $block;
+}
+
 
 /**
  * Implements hook_menu().
@@ -37,5 +68,45 @@ function drupalcon_config_form($form, $form_state) {
     '#default_value' => variable_get('drupalcon_debug_active')
   );
 
+  $form['drupalcon_closed'] = array(
+    '#title' => t('Drupalcon closed'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('drupalcon_closed', TRUE)
+  );
+
   return system_settings_form($form);
+}
+
+
+function drupalcon_show_weather() {
+
+  timer_start('drupalcon_weather');
+  // wait for 0.2 seconds
+  usleep(200000);
+  $node = node_load(arg(1));
+  $block['subject'] = t('Current weather nearby');
+  $block['content'] = '';
+  $display = weather_get_display_settings('default', 1);
+
+  if (!empty($node)) {
+    $locations = field_get_items('node', $node, 'field_location');
+    $location = $locations[0];
+  }
+
+  // default locations
+  if (empty($location['latitude']) or (empty($location['longitude']))) {
+    $location['latitude'] = '50.5';
+    $location['longitude'] = '14.26';
+  }
+
+  $station = weather_get_nearest_station($location['latitude'], $location['longitude']);
+  $metar = weather_get_metar($station->icao);
+
+  $timer = timer_read('drupalcon_weather');
+
+  if (variable_get('drupalcon_debug_active', FALSE)) {
+    drupal_set_message ('time spent with drupalcon weather - ' . $timer);
+  }
+
+  return theme('weather_theming',   array('display' => $display, 'location' => $station, 'metar' => $metar));
 }

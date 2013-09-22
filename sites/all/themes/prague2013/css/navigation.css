@@ -112,26 +112,34 @@ li a.active {
   clip: rect(1px, 1px, 1px, 1px);
 }
 /* line 113, ../sass/navigation.scss */
-#navigation .menu-name-main-menu > ul.menu {
+#navigation .menu-name-main-menu > ul.menu,
+#navigation #block-system-main-menu > ul.menu {
   /* Menu block links */
   margin: 0;
   padding: 0;
 }
 /* line 117, ../sass/navigation.scss */
-#navigation .menu-name-main-menu > ul.menu li {
+#navigation .menu-name-main-menu > ul.menu li,
+#navigation #block-system-main-menu > ul.menu li {
   display: block;
   list-style-type: none;
   list-style-image: none;
   position: relative;
+  float: left;
 }
+
 @media all and (min-width: 960px) {
   /* line 117, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li {
+  #navigation .menu-name-main-menu > ul.menu li,
+  #navigation #block-system-main-menu > ul.menu li,
+  {
     display: inline-block;
   }
 }
 /* line 127, ../sass/navigation.scss */
-#navigation .menu-name-main-menu > ul.menu li a {
+#navigation .menu-name-main-menu > ul.menu li a,
+#navigation #block-system-main-menu > ul.menu li a
+{
   display: block;
   padding: 13px 15px;
   text-decoration: none;
@@ -139,22 +147,22 @@ li a.active {
 }
 @media all and (max-width: 960px) {
   /* line 135, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li.expanded > ul {
+  #navigation #block-system-main-menu  > ul.menu li.expanded > ul {
     background: rgba(255, 255, 255, 0.1);
   }
   /* line 139, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li.active-trail > ul {
+  #navigation #block-system-main-menu  > ul.menu li.active-trail > ul {
     background: #171618;
     display: block;
   }
   /* line 145, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li > a.active-trail, #navigation .menu-name-main-menu > ul.menu li > a.active {
+  #navigation #block-system-main-menu  > ul.menu li > a.active-trail, #navigation .menu-name-main-menu > ul.menu li > a.active {
     background: #171618;
     border-bottom: #2a292d 1px solid;
   }
 }
 /* line 152, ../sass/navigation.scss */
-#navigation .menu-name-main-menu > ul.menu li .expand-button {
+#navigation #block-system-main-menu  > ul.menu li .expand-button {
   display: block;
   width: 45px;
   height: 45px;
@@ -169,23 +177,23 @@ li a.active {
   cursor: pointer;
 }
 /* line 167, ../sass/navigation.scss */
-#navigation .menu-name-main-menu > ul.menu li .expand-button.open {
+#navigation #block-system-main-menu  > ul.menu li .expand-button.open {
   background-position: 0 100%;
 }
 @media all and (min-width: 960px) {
   /* line 152, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li .expand-button {
+  #navigation #block-system-main-menu  > ul.menu li .expand-button {
     display: none;
   }
 }
 /* line 177, ../sass/navigation.scss */
-#navigation .menu-name-main-menu > ul.menu li > ul {
+#navigation #block-system-main-menu  > ul.menu li > ul {
   /* Dropdown menus */
   display: none;
 }
 @media all and (min-width: 960px) {
   /* line 183, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li > ul {
+  #navigation #block-system-main-menu  > ul.menu li > ul {
     display: none;
     width: 220px;
     position: absolute;
@@ -204,48 +212,48 @@ li a.active {
     border-radius: 11px;
   }
   /* line 195, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li > ul li {
+  #navigation #block-system-main-menu  > ul.menu li > ul li {
     display: block;
   }
   /* line 198, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li > ul li a {
+  #navigation #block-system-main-menu  > ul.menu li > ul li a {
     display: block;
     padding: 10px;
     color: #e4d4c0;
     border-bottom: 1px #415963 solid;
   }
   /* line 204, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li > ul li a:hover {
+  #navigation #block-system-main-menu  > ul.menu li > ul li a:hover {
     background: #e88c2d;
   }
   /* line 209, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li > ul li:first-child a {
+  #navigation #block-system-main-menu  > ul.menu li > ul li:first-child a {
     border-radius: 11px 11px 0 0;
   }
   /* line 213, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li > ul li:last-child a {
+  #navigation #block-system-main-menu  > ul.menu li > ul li:last-child a {
     border-radius: 0 0 11px 11px;
   }
   /* line 220, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu li:hover ul {
+  #navigation #block-system-main-menu  > ul.menu li:hover ul {
     display: block !important;
   }
 }
 @media all and (min-width: 960px) {
   /* line 113, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu {
+  #navigation #block-system-main-menu  > ul.menu {
     text-align: center;
   }
   /* line 230, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu > li:nth-child(3) {
+  #navigation #block-system-main-menu  > ul.menu > li:nth-child(3) {
     margin-right: 360px;
   }
   /* line 235, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu > li > a {
+  #navigation #block-system-main-menu  > ul.menu > li > a {
     position: relative;
   }
   /* line 250, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu > li.active-trail > a:after, #navigation .menu-name-main-menu > ul.menu > li.active > a:after, #navigation .menu-name-main-menu > ul.menu > li.active-trail:hover > a:after, #navigation .menu-name-main-menu > ul.menu > li.active:hover > a:after {
+  #navigation #block-system-main-menu  > ul.menu > li.active-trail > a:after, #navigation .menu-name-main-menu > ul.menu > li.active > a:after, #navigation .menu-name-main-menu > ul.menu > li.active-trail:hover > a:after, #navigation .menu-name-main-menu > ul.menu > li.active:hover > a:after {
     content: "";
     display: block;
     width: 0;
@@ -259,7 +267,7 @@ li a.active {
     margin-left: -20px;
   }
   /* line 265, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu > li:hover > a:before {
+  #navigation #block-system-main-menu  > ul.menu > li:hover > a:before {
     content: "";
     display: block;
     width: 0;
@@ -274,7 +282,7 @@ li a.active {
     z-index: 1;
   }
   /* line 281, ../sass/navigation.scss */
-  #navigation .menu-name-main-menu > ul.menu > li.expanded:hover > a:before {
+  #navigation #block-system-main-menu  > ul.menu > li.expanded:hover > a:before {
     border-bottom: 10px solid #5e7e84;
     bottom: 0;
   }

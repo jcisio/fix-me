@@ -78,6 +78,9 @@
       <?php if ($site_name || $site_slogan): ?>
         <hgroup id="name-and-slogan">
           <?php if ($site_name): ?>
+            <h1 class="title-wrapper">
+              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" ><?php print $site_name; ?></span></a>
+            </h1>
             <h1 id="site-name" class="logo-wrapper">
               <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="logo"><?php print $site_name; ?></span></a>
             </h1>

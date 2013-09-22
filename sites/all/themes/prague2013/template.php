@@ -224,3 +224,15 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
+
+
+function dcprg_preprocess_page(&$variables, $hook) {
+  // When a variable is manipulated or added in preprocess_html or
+  // preprocess_page, that same work is probably needed for the maintenance page
+  // as well, so we can just re-use those functions to do that work here.
+
+  if (isset($variables['node'])) {
+    $variables['theme_hook_suggestions'][] = 'page__node__'. $variables['node']->type;
+  }
+
+}

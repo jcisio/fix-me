@@ -97,13 +97,22 @@
     margin-right: -66.66667%;
   }
   /* line 106, ../../sass/layouts/responsive-sidebars.scss */
-  .sidebar-second .region-sidebar-second {
-    /* Span 2 columns, starting in 5th column from left. */
-    float: left;
-    width: 33.33333%;
-    margin-left: 66.66667%;
-    margin-right: -100%;
-  }
+    .sidebar-second .region-sidebar-second {
+        /* Span 2 columns, starting in 5th column from left. */
+        float: left;
+        width: 33.33333%;
+        margin-left: 66.66667%;
+        margin-right: -100%;
+    }
+
+    /* line 106, ../../sass/layouts/responsive-sidebars.scss */
+    .sidebar-second .region-sidebar-second-after {
+        /* Span 2 columns, starting in 5th column from left. */
+        float: left;
+        width: 33.33333%;
+        margin-left: 66.66667%;
+        margin-right: -100%;
+    }
 
   /*
    * The layout when there are two sidebars.
