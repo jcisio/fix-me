@@ -1,0 +1,6 @@
+name = Labs administration
+description = Provide administrative shortcuts for the site. Totally secure.
+
+core = 7.x
+
+project = Fix me

@@ -1,0 +1,16 @@
+<?php
+
+function labs_admin_menu() {
+  $items['admin/content/unpublish/%node'] = array(
+    'title' => 'Unpublish content',
+    'page callback' => 'labs_admin_unpublish',
+    'page arguments' => array(3),
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+function labs_admin_unpublish($node) {
+  $node->status = 0;
+  node_save($node);
+}
