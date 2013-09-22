@@ -150,11 +150,11 @@ function fix_me_feature_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_presenter',
     'foreign keys' => array(
-      'users' => array(
+      'node' => array(
         'columns' => array(
-          'target_id' => 'uid',
+          'target_id' => 'nid',
         ),
-        'table' => 'users',
+        'table' => 'node',
       ),
     ),
     'indexes' => array(
@@ -175,9 +175,11 @@ function fix_me_feature_field_default_field_bases() {
         'sort' => array(
           'type' => 'none',
         ),
-        'target_bundles' => array(),
+        'target_bundles' => array(
+          'drupalistas' => 'drupalistas',
+        ),
       ),
-      'target_type' => 'user',
+      'target_type' => 'node',
     ),
     'translatable' => 0,
     'type' => 'entityreference',
