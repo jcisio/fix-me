@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * Implements hook_block_info
+ */
+function drupalcon_sessions_block_info() {
+
+  $blocks['sessions'] = array(
+    'info' => t('Sessions custom block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+
+}
+
+/**
+ * Implements hook_block_view
+ */
+function drupalcon_sessions_block_view($delta = '')  {
+
+  switch ($delta) {
+    case 'sessions':
+      $block['subject'] = t('Past sessions');
+      $block['content'] = drupalcon_show_sessions_menu();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Renders block content for sessions jumpmenu
+ * @return string with block contet
+ */
+function drupalcon_show_sessions_menu() {
+
+  timer_start('drupalcon_sessions_with_block');
+
+  $efq = new EntityFieldQuery();
+  $efq->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'sessions')
+      ->propertyCondition('status', 1, '=');
+
+  $results = $efq->execute();
+
+  $content = '';
+
+  if (!empty($results)) {
+    $nodes = node_load_multiple(array_keys($results['node']), array(), TRUE);
+    $content = drupal_get_form('drupalcon_sessions_jumpmenu', $nodes);
+  }
+
+  $timer = timer_read('drupalcon_sessions_with_block');
+
+  if (variable_get('drupalcon_debug_active', FALSE)) {
+    drupal_set_message ('time spent with custom block and node_load - ' . $timer);
+  }
+
+  return $content;
+}
+
+
+function drupalcon_sessions_jumpmenu($form, $form_state, $nodes) {
+
+  if (!empty($nodes)) {
+    foreach ($nodes as $node) {
+      $options['/node/' . $node->nid] = truncate_utf8($node->title, 20);
+    }
+  }
+
+  $form['sessions_options'] = array(
+    '#type' => 'select',
+    '#title' => t('Jump to a section'),
+    '#attributes' => array(
+      'class' => array('sessions_jumpmenu_options')
+    ),
+    '#options' => $options
+  );
+
+  $form['#attached'] = array(
+    'js' => array(drupal_get_path('module', 'drupalcon_sessions') . '/drupalcon_sessions.js'));
+
+
+  $form['generated'] = array(
+    '#markup' => t('Generated on !date', array('!date' => format_date(time(), 'medium', 'Y-m-d H:i:s'))));
+
+  return $form;
+}
+
+/**
+ * Implements hook_views_pre_view()
+ */
+function drupalcon_sessions_views_pre_view($view) {
+  if ($view->name == 'sessions' && $view->current_display == 'block') {
+    timer_start('drupalcon_sessions_with_view');
+  }
+}
+
+/**
+ * Implements hook_views_post_build().
+ */
+function drupalcon_sessions_views_post_build($view) {
+  if ($view->name == 'sessions' && $view->current_display == 'block') {
+    $timer =  timer_read('drupalcon_sessions_with_view');
+
+    if (variable_get('drupalcon_debug_active', FALSE)) {
+      drupal_set_message('time spent with views block - ' . $timer);
+    }
+  }
+}
