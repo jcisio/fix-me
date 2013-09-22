@@ -1,6 +1,7 @@
 name = Fix Me Feature
 core = 7.x
 package = Features
+dependencies[] = blockcache_alter
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = drupalcon_general
