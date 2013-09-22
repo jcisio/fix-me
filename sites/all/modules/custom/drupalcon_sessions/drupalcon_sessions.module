@@ -21,7 +21,7 @@ function drupalcon_sessions_block_view($delta = '')  {
 
   switch ($delta) {
     case 'sessions':
-      $block['subject'] = t('Sessions custom block');
+      $block['subject'] = t('Past sessions');
       $block['content'] = drupalcon_show_sessions_menu();
       break;
   }
@@ -43,14 +43,13 @@ function drupalcon_show_sessions_menu() {
       ->propertyCondition('status', 1, '=');
 
   $results = $efq->execute();
+
   $content = '';
 
   if (!empty($results)) {
     $nodes = node_load_multiple(array_keys($results['node']));
     $content = drupal_get_form('drupalcon_sessions_jumpmenu', $nodes);
   }
-
-  $content = t('Generated on !date', array('!date' => format_date(time())));
 
   $timer = timer_read('drupalcon_sessions_with_block');
 
@@ -81,6 +80,10 @@ function drupalcon_sessions_jumpmenu($form, $form_state, $nodes) {
 
   $form['#attached'] = array(
     'js' => array(drupal_get_path('module', 'drupalcon_sessions') . '/drupalcon_sessions.js'));
+
+
+  $form['generated'] = array(
+    '#markup' => t('Generated on !date', array('!date' => format_date(time(), 'medium', 'Y-m-d H:i:s'))));
 
   return $form;
 }
