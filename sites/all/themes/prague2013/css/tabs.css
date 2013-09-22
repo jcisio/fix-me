@@ -1,0 +1,162 @@
+/**
+ * @file
+ * Tabs Styling
+ *
+ * Adds styles for the primary and secondary tabs.
+ *
+ * Compare this with default CSS found in the system module's stylesheet (a copy
+ * of which is in drupal7-reference.css.)
+ */
+/*
+ * Basic positioning styles shared by primary and secondary tabs.
+ */
+/* line 24, ../sass/tabs.scss */
+ul.primary,
+ul.secondary {
+  overflow: hidden;
+  border-bottom: 0;
+  list-style: none;
+  margin: 1em 0 1.5em;
+  padding: 0 2px;
+  white-space: nowrap;
+  -webkit-box-shadow: inset #e4d4c0 -20px 20px 20px, inset #e4d4c0 6px 20px 0, inset rgba(0, 0, 0, 0.25) 0 -1px 6px;
+  -moz-box-shadow: inset #e4d4c0 -20px 20px 20px, inset #e4d4c0 6px 20px 0, inset rgba(0, 0, 0, 0.25) 0 -1px 6px;
+  box-shadow: inset #e4d4c0 -20px 20px 20px, inset #e4d4c0 6px 20px 0, inset rgba(0, 0, 0, 0.25) 0 -1px 6px;
+}
+@media (min-width: 920px) {
+  /* line 37, ../sass/tabs.scss */
+  ul.primary li,
+  ul.secondary li {
+    float: left;
+    /* LTR */
+    margin: 0.5em 3px 0;
+  }
+}
+/* line 43, ../sass/tabs.scss */
+ul.primary a,
+ul.secondary a {
+  border: 1px solid #e9e9e9;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  display: block;
+  line-height: 1.5em;
+  text-decoration: none;
+}
+
+/*
+ * Primary tabs
+ */
+/* line 59, ../sass/tabs.scss */
+ul.primary li {
+  -webkit-border-radius: 11px;
+  -moz-border-radius: 11px;
+  -ms-border-radius: 11px;
+  -o-border-radius: 11px;
+  border-radius: 11px;
+  border: 0;
+  border-bottom: 0;
+  margin: 0.5em 0 0 3px;
+  /* LTR */
+}
+@media (min-width: 920px) {
+  /* line 59, ../sass/tabs.scss */
+  ul.primary li {
+    -webkit-border-radius: 11px 11px 0 0;
+    -moz-border-radius: 11px 11px 0 0;
+    -ms-border-radius: 11px 11px 0 0;
+    -o-border-radius: 11px 11px 0 0;
+    border-radius: 11px 11px 0 0;
+  }
+}
+/* line 71, ../sass/tabs.scss */
+ul.primary li.active {
+  border-bottom: 0;
+  margin-bottom: -1px;
+  /* Overlap the ul's border. */
+}
+/* line 77, ../sass/tabs.scss */
+ul.primary a:link,
+ul.primary a:visited {
+  -moz-border-radius-topleft: 11px;
+  -webkit-border-top-left-radius: 11px;
+  border-top-left-radius: 11px;
+  -moz-border-radius-topright: 11px;
+  -webkit-border-top-right-radius: 11px;
+  border-top-right-radius: 11px;
+  color: #333;
+  background-color: transparent;
+  letter-spacing: 0;
+  padding: 7px 20px;
+  text-align: center;
+}
+/* line 87, ../sass/tabs.scss */
+ul.primary a:hover,
+ul.primary a:focus {
+  background-color: transparent;
+  border-color: #fff;
+  text-decoration: underline;
+}
+/* line 93, ../sass/tabs.scss */
+ul.primary a.active {
+  background-color: #e4d4c0;
+  border-color: #fff;
+  -webkit-box-shadow: inset rgba(255, 255, 255, 0.5) 0 10px 20px, rgba(0, 0, 0, 0.3) 0 0 5px;
+  -moz-box-shadow: inset rgba(255, 255, 255, 0.5) 0 10px 20px, rgba(0, 0, 0, 0.3) 0 0 5px;
+  box-shadow: inset rgba(255, 255, 255, 0.5) 0 10px 20px, rgba(0, 0, 0, 0.3) 0 0 5px;
+}
+
+/* Hack to get active state working on schedule tabs working for Prague.  */
+/* line 106, ../sass/tabs.scss */
+.page-program-schedule-monday .monday,
+.page-program-schedule-tuesday .tuesday,
+.page-program-schedule-wednesday .wednesday,
+.page-program-schedule-thursday .thursday,
+.page-program-schedule-friday .friday {
+  background-color: #e4d4c0;
+  border-color: #fff;
+  -webkit-box-shadow: inset rgba(255, 255, 255, 0.5) 0 10px 20px, rgba(0, 0, 0, 0.3) 0 0 5px;
+  -moz-box-shadow: inset rgba(255, 255, 255, 0.5) 0 10px 20px, rgba(0, 0, 0, 0.3) 0 0 5px;
+  box-shadow: inset rgba(255, 255, 255, 0.5) 0 10px 20px, rgba(0, 0, 0, 0.3) 0 0 5px;
+}
+
+/*
+ * Secondary tabs
+ */
+/* line 117, ../sass/tabs.scss */
+ul.secondary {
+  font-size: .9em;
+  margin-top: -1.5em;
+  /* Collapse bottom margin of ul.primary. */
+  padding-bottom: .5em;
+}
+/* line 123, ../sass/tabs.scss */
+ul.secondary a:link,
+ul.secondary a:visited {
+  -webkit-border-radius: 0.75em;
+  -moz-border-radius: 0.75em;
+  -ms-border-radius: 0.75em;
+  -o-border-radius: 0.75em;
+  border-radius: 0.75em;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  background-color: #f2f2f2;
+  color: #666;
+  padding: 0 .5em;
+}
+/* line 132, ../sass/tabs.scss */
+ul.secondary a:hover,
+ul.secondary a:focus {
+  background-color: #dedede;
+  border-color: #999;
+  color: #333;
+}
+/* line 139, ../sass/tabs.scss */
+ul.secondary a.active,
+ul.secondary a:active {
+  background-color: #666;
+  border-color: #000;
+  color: #fff;
+}

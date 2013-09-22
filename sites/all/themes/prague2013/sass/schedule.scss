@@ -1,0 +1,244 @@
+/**
+ * @file
+ * DrupalCon Schedule Styling
+ */
+
+@import "base";
+
+// (Better) exposed track filters
+
+.view-drupalcon-schedule .views-exposed-form {
+  background: rgba(255,255,255,0.5);
+  @include border-radius(5px);
+  position: relative;
+}
+
+// Ajax throbber
+.view-drupalcon-schedule .views-exposed-form .ajax-progress {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.view-drupalcon-schedule .views-exposed-widgets {
+  margin-bottom: 0;
+}
+
+.views-exposed-form .views-exposed-widget {
+  float: none;
+  padding: 0;
+}
+
+// "Filter by track" filter box title
+.view-drupalcon-schedule .views-exposed-widgets > .views-exposed-widget > label {
+  background: $orange;
+  font-family: $futura;
+  font-size: $h4-font-size;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  @include border-radius(5px);
+  box-shadow: inset rgba(255,255,255,0.2) 0 5px 20px;
+  border-bottom: #fff 1px solid;
+}
+
+label.open {
+  border-radius: 5px 5px 0 0 !important;
+}
+
+// Filter wrapper
+@media (max-width: 720px) {
+  .form-item-field-track-value {
+    display: none;
+  }
+}
+
+.bef-checkboxes {
+  @include clearfix;
+  padding: 20px 10px;
+}
+
+.bef-checkboxes .form-type-bef-checkbox {
+  padding: 0 10px;
+  margin-bottom: 5px;
+  
+  @media (min-width: 920px) {
+    width: 50%;
+    float: left;
+  }
+}
+
+.bef-checkboxes [type="checkbox"] {
+  display: none;
+}
+
+.bef-checkboxes label.option {
+  display: block;
+  padding: 8px 20px 6px 38px;
+  background: url(../images/prague/sprite-track-icons.png) no-repeat 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bef-checkboxes [type="checkbox"]:checked + label.option {
+  background-color: #c7c7c7;
+  background-color: rgba(0,0,0,0.2);
+  color: #fff;
+}
+
+/* Filter icons */
+.form-item-edit-field-track-value-1 label.option {
+  background-position: 5px 5px; // Business & strategy
+}
+
+.form-item-edit-field-track-value-2 label.option {
+  background-position: 5px -35px; // Coding & development
+}
+
+.form-item-edit-field-track-value-3 label.option {
+  background-position: 5px -75px; // DevOps
+}
+
+.form-item-edit-field-track-value-4 label.option {
+  //background-position: 5px -115px; // Frontend TWIG
+  background-position: 5px -315px; // Frontend HTML5
+}
+
+.form-item-edit-field-track-value-5 label.option {
+  background-position: 5px -155px; // Site building
+}
+
+.form-item-edit-field-track-value-6 label.option {
+  background-position: 5px -195px; // Core conversations
+}
+
+.form-item-edit-field-track-value-7 label.option {
+  background-position: 5px -235px; // Labs
+}
+
+.form-item-edit-field-track-value-8 label.option {
+  background-position: 5px -275px; // Business showcase
+}
+
+
+// Main Schedule
+.view-drupalcon-schedule .view-content {
+  overflow: hidden;
+  @include border-radius(5px);
+}
+
+
+/* Time slots */
+.time-label {
+  padding: 10px;
+  margin: 0;
+  font-size: $h4-font-size;
+  text-align: center;
+  color: #fff;
+  background: $brown;
+}
+
+.schedule-list {
+  margin: 0;
+}
+
+.schedule-item {
+  position: relative;
+  background: rgba(255,255,255,0.5);
+  padding: 20px;
+  margin-bottom: 1px;
+}
+
+.schedule-item .flag-wrapper {
+  float: right;
+}
+
+.session-title {
+  margin: 0;
+}
+
+.username,
+.schedule-room-title {
+  display: inline-block;
+  padding-left: 20px;
+  font-size: 0.75em;
+  background: url(../images/prague/sprite-schedule2.png) no-repeat 0 1px;
+}
+
+.username {
+  margin-right: 20px;
+}
+
+.schedule-room-title {
+  background-position: 0 -35px;
+  margin-right: 20px;
+}
+
+.experience-level {
+  width: 30px;
+  float: right;
+  background: url(../images/prague/sprite-schedule2.png) no-repeat;
+}
+
+.Beginner {
+  background-position: 0 -56px;
+}
+
+.Intermediate {
+  background-position: 0 -76px;
+}
+
+.Advanced {
+  background-position: 0 -96px;
+}
+
+.track-icon {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 23px;
+  left: 20px;
+  background: url(../images/prague/sprite-track-icons.png) no-repeat;
+}
+
+/* Track icons. Annoyingly slightly different. Could be refactored. */
+.track1 {
+  background-position: 0 0; // Business & strategy
+}
+
+.track2 {
+  background-position: 0 -40px; // Coding & development
+}
+
+.track3 {
+  background-position: 0 -80px; // DevOps
+}
+
+.track4 {
+  //background-position: 0 -120px; // Frontend TWIG
+  background-position: 0 -320px; // Frontend HTML5
+}
+
+.track5 {
+  background-position: 0 -160px; // Site building
+}
+
+.track6 {
+  background-position: 0 -200px; // Core conversations
+}
+
+.track7 {
+  background-position: 0 -240px; // Labs
+}
+
+.track8 {
+  background-position: 0 -280px; // Business showcase
+}
+
+/* Main schedule specific styles -------------------------------------------- */
+.main-schedule .schedule-item {
+  padding-left: 60px;
+}
+

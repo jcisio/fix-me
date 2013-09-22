@@ -1,0 +1,6 @@
+name = "DrupalCon base theme"
+description = "Base theme for Drupal.org DrupalCon sites"
+core = 7.x
+engine = phptemplate
+
+stylesheets[all][] = drupalcon_base.css

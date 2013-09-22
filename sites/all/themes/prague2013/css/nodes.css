@@ -1,0 +1,137 @@
+/**
+ * @file
+ * Node Styling
+ *
+ * Style anything that isn't in the $content variable.
+ */
+/* line 11, ../sass/nodes.scss */
+.node {
+  /* Node wrapper */
+}
+/* line 13, ../sass/nodes.scss */
+.node .field-item > p:first-of-type:first-letter {
+  /*
+    font-family: $futura;
+    font-size: 4.65em;
+    float: left;
+    // This is doing very different things between FF and Webkit. Need to check others
+    margin: 0.3em 0.1em 0.06em 0;
+    */
+}
+/* line 23, ../sass/nodes.scss */
+.preview .node {
+  /* Preview of the content before submitting new or updated content */
+  /* background-color: #ffffea; */
+  /* Drupal core uses a #ffffea background */
+}
+/* line 27, ../sass/nodes.scss */
+.node .node-title {
+  /* Node title */
+}
+/* line 30, ../sass/nodes.scss */
+.node .user-picture {
+  /* The picture of the node author */
+}
+/* line 33, ../sass/nodes.scss */
+.node .submitted {
+  /* The "posted by" information */
+}
+/* line 36, ../sass/nodes.scss */
+.node .content {
+  /* Node's content wrapper */
+}
+/* line 39, ../sass/nodes.scss */
+.node ul.links {
+  /* Node links. See also the ul.links declaration in the pages.css. */
+}
+/* line 40, ../sass/nodes.scss */
+.node ul.links a {
+  font-size: 13.28px;
+}
+
+/* line 47, ../sass/nodes.scss */
+.node-promoted {
+  /* A node that has been promoted to the front page */
+}
+
+/* line 50, ../sass/nodes.scss */
+.node-sticky {
+  /* A sticky node (displayed before others in a list) */
+}
+
+/* line 53, ../sass/nodes.scss */
+.node-by-viewer {
+  /* A node created by the current user */
+}
+
+/* line 56, ../sass/nodes.scss */
+.node-teaser {
+  /* A node displayed as teaser */
+  padding-bottom: 2em;
+  margin-bottom: 3em;
+  position: relative;
+  /*
+   * The writing style of the editorial team prefers very long headlines. In 
+   * order to mitigate against ugly H1s, I have recommended splitting them up
+   * into main and sub headings. This means that we will have 2x h2s on node
+   * teasers, so we need to set the second one to display like an h3 in order
+   * to maintain correct visual hierarchy.
+   */
+}
+/* line 68, ../sass/nodes.scss */
+.node-teaser .field-item.even > h2 {
+  font-size: 20px;
+  text-transform: none;
+}
+@media all and (min-width: 1030px) {
+  /* line 68, ../sass/nodes.scss */
+  .node-teaser .field-item.even > h2 {
+    font-size: 30px;
+  }
+}
+/* line 77, ../sass/nodes.scss */
+.node-teaser ul.links {
+  display: none;
+}
+
+/*
+ * All nodes are given a node-FOO class that describes the type of content that
+ * it is. If you create a new content type called "my-custom-type", it will
+ * receive a "node-my-custom-type" class.
+ */
+/* line 88, ../sass/nodes.scss */
+.node-page {
+  /* Page content node */
+}
+
+/* line 91, ../sass/nodes.scss */
+.node-article {
+  /* Article content node */
+}
+
+/* line 94, ../sass/nodes.scss */
+.node-unpublished {
+  /* Unpublished nodes */
+  /* background-color: #fff4f4; */
+  /* Drupal core uses a #fff4f4 background */
+}
+/* line 97, ../sass/nodes.scss */
+.node-unpublished p.unpublished {
+  /* The word "Unpublished" displayed underneath the content. */
+  height: 0;
+  overflow: visible;
+  color: #d8d8d8;
+  font-size: 75px;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow", Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* line 103, ../sass/nodes.scss */
+.social-button {
+  float: left;
+  margin-right: 25px;
+}

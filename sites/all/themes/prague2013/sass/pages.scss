@@ -1,0 +1,470 @@
+/**
+ * @file
+ * Page Styling
+ *
+ * Style the markup found in page.tpl.php. Also includes some styling of
+ * miscellaneous Drupal elements that appear in the $content variable, such as
+ * ul.links, .pager, .more-link, etc.
+ */
+
+@import "base";
+@import "prague/*.png";
+@include all-prague-sprites;
+
+/*
+ * Body
+ */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: $paper url(../images/tile-aged-paper.png);
+  overflow-x: hidden;
+}
+
+#page {
+}
+
+.container { // Reusable class to set the max width of various sections
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/*
+ * The skip-link link will be completely hidden until a user tabs to the link.
+ * See the element-focusable rule in system.base.css.
+ */
+
+#skip-link {
+  margin: 0;
+
+  a,
+  a:visited {
+    display: block;
+    width: 100%;
+    padding: 2px 0 3px 0;
+    text-align: center;
+    background-color: #666;
+    color: #fff;
+  }
+}
+
+/*
+ * Header
+ */
+
+#header {
+  // height: 120px;
+  background: url(../images/tile-header-bg.jpg) 50% 0;
+  position: relative;
+  z-index: 3;
+}
+
+#site-name {
+  display: block;
+  width: 128px;
+  height: 89px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+.logo { /* Wrapping link for logo */
+  display: block;
+  width: 128px;
+  height: 89px;
+  background: url(../images/logo-prague.png) no-repeat 50% 0;
+  background-size: 100% 100%;
+  overflow: hidden;
+  text-indent: -500em;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -64px;
+}
+
+@media all and (min-width: 960px) {
+  #site-name {
+    display: block;
+    width: 354px;
+    height: 77px;
+    background: url(../images/logo-bg.png) no-repeat 50% 0;
+    position: absolute;
+    top: auto;
+    bottom: -77px;
+    left: 50%;
+    margin: 0 0 0 -177px;
+  }
+  
+  .logo { /* Wrapping link for logo */
+    display: block;
+    width: 256px;
+    height: 175px;
+    background: url(../images/logo-prague.png) no-repeat 50% 0;
+    overflow: hidden;
+    text-indent: -500em;
+    position: absolute;
+    left: 50%;
+    top: -121px;
+    margin-left: -128px;
+  }
+}
+
+#name-and-slogan {
+  clear: both;
+}
+
+#site-slogan { /* The slogan (or tagline) of a website */
+  margin: 0;
+  font-size: 1em;
+}
+
+.region-header { /* Wrapper for any blocks placed in the header region */
+  clear: both; /* Clear the logo */
+}
+
+/*
+ * Main (container for everything else)
+ */
+
+#main {
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  
+  @media all and (min-width: 960px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/*
+ * Content
+ */
+@media all and (min-width: 620px) {
+  .sidebar-second #content {
+    padding-right: 50px;  // 10px (half gutter) + 40px additional space
+  }
+}
+ 
+.floated-list {
+  @include floated-list;
+}
+
+  
+// Main sponsors page
+.view-sponsors-admin .item-list > ul {
+  @include floated-list;
+  
+  & > li {
+    vertical-align: middle;
+  }
+  
+  @media screen and (min-width: 400px) {
+    & > li.Diamond {
+      width: 50%;
+    }
+
+    & > li.Platinum {
+      width: 40%;
+    }
+
+    & > li.Gold,
+    & > li.Silver,
+    & > li.Bronze,
+    & > li.Media {
+      width: 33%;
+    }
+  }
+  
+  @media screen and (min-width: 780px) {
+    & > li.Diamond {
+      width: 40%;
+    }
+
+    & > li.Platinum {
+      width: 33%;
+    }
+
+    & > li.Gold,
+    & > li.Silver,
+    & > li.Bronze,
+    & > li.Media {
+      width: 25%;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .region-footer .view-sponsors-admin .item-list > ul > li {
+    width: 33%;
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .region-footer .view-sponsors-admin .item-list > ul > li {
+    width: 15%;
+  }
+}
+
+
+.region-highlighted {
+  position: relative;
+}
+
+.breadcrumb { /* The path to the current page in the form of a list of links */
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+h1.title, /* The title of the page */
+h2.node-title, /* Title of a piece of content when it is given in a list of content */
+h2.block-title, /* Block title */
+h2.title, /* Comment section heading */
+h2.comment-form, /* Comment form heading */
+h3.title { /* Comment title */
+  margin: 0;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  background-color: #dac7af;
+  border-bottom: $paper 2px solid !important;
+}
+
+tr.even { /* Some tables have rows marked even or odd. */
+  background-color: #cab598;
+}
+
+tr.odd {
+  background-color: #dac7af;
+}
+
+thead tr {
+  background-color: $brown;
+  color: $paper;
+}
+
+td,
+th {
+  padding: 20px;
+}
+
+td.active {
+  background-color: #ece2d6;
+  background-color: rgba(255,255,255,0.5);
+}
+
+div.messages { /* Important messages (status, warning, and error) for the user. See also the declarations in messages.css. */
+  margin: 1.5em 0; /* Drupal core uses "6px 0" margin */
+
+  ul {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+div.status { /* Normal priority messages */
+}
+
+div.warning,
+tr.warning { /* Medium priority messages */
+  /* border: 1px solid #f0c020; */ /* Drupal core uses: 1px solid #f0c020 */
+}
+
+div.error,
+tr.error { /* High priority messages. See also the .error declaration below. */
+}
+
+.error { /* Errors that are separate from div.messages status messages. */
+  /* color: #e55; */ /* Drupal core uses a #e55 background */
+}
+
+.warning { /* Warnings that are separate from div.messages status messages. */
+  /* color: #e09010; */ /* Drupal core uses a #e09010 background */
+}
+
+.tabs { /* See also the tabs.css file. */
+}
+
+.region-help { /* Help text on a page */
+}
+
+.more-help-link { /* Link to more help */
+}
+
+.region-content { /* Wrapper for the actual page content */
+}
+
+ul.inline { /* List of links generated by theme_links() */
+  display: inline;
+  padding: 0;
+
+  li {
+    display: inline;
+    list-style-type: none;
+    padding: 0 1em 0 0; /* LTR */
+  }
+}
+span.field-label { /* The inline field label used by the Fences module */
+  padding: 0 1em 0 0; /* LTR */
+}
+
+.item-list .pager { /* A list of page numbers when more than 1 page of content is available */
+  padding: 0;
+
+  li { /* Each page number in the pager list */
+    padding: 0 5px;
+    
+    a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+      @include border-radius(15px);
+      background: $orange;
+      color: #fff;
+      text-decoration: none;
+            
+      &:hover {
+        background: $darkorange;
+      }
+    }
+          
+    &.pager-first a,
+    &.pager-last a,
+    &.pager-previous a,
+    &.pager-next a {
+      width: auto;
+      padding: 5px 10px;
+    }
+  }
+}
+
+.feed-icon { /* The link to the RSS or Atom feed for the current list of content */
+  position: absolute;
+  bottom: 18px;
+  right: 20px;
+}
+
+.more-link { /* Aggregator, blog, and forum more link */
+}
+
+/* User pictures */
+.user-picture {
+  display: inline-block;
+  max-width: 220px;
+  max-height: 220px;
+  overflow: hidden;
+  @include border-radius(220px);
+  
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 220px;
+    @include border-radius(220px);
+  }
+}
+
+.user-profile .user-picture {
+  float: right;
+  margin: 0 0 20px 20px;
+}
+
+/*
+ * First sidebar (on left in LTR languages, on right in RTL)
+ *
+ * Remember to NOT add padding or margin to your .region-sidebar-first
+ * (see the layout.css file.)
+ */
+
+.region-sidebar-first {
+}
+
+/*
+ * Second sidebar (on right in LTR languages, on left in RTL)
+ *
+ * Remember to NOT add padding or margin to your .region-sidebar-second
+ * (see the layout.css file.)
+ */
+
+.not-front .region-sidebar-second {
+  padding-top: 120px;
+}
+
+/*
+ * Footer
+ */
+
+#footer {
+  position: relative;
+  margin-top: 40px;
+  padding-top: 40px;
+  overflow: hidden;
+  
+  border-top: #000 2px solid;
+  box-shadow: #e5d5c1 0 -2px 0,
+              #000 0 -3px 0;
+              
+  h3 {
+    margin-top: 0;
+    text-align: center;
+  }
+}
+
+/*
+ * Page bottom
+ */
+.region-bottom { /* Wrapper for any blocks placed in the page bottom region */
+  padding-bottom: 360px;
+  background: #010101 url(../images/footer-bg.jpg) no-repeat 50% 0;
+  background-size: 100% auto;
+  font-size: $h6-font-size;
+  text-align: center;
+  color: #e4d4c0;
+  position: relative;
+  
+  a {
+    color: #e4d4c0;
+  }
+  
+  @media screen and (min-width: 670px) {
+    padding-bottom: 440px;
+  }
+  
+  @media screen and (min-width: 940px) {
+    padding-bottom: 580px;
+  }
+  
+  @media screen and (min-width: 1280px) {
+    padding-bottom: 680px;
+    
+  }
+}
+
+// Copyright and credits
+.region-bottom .block {
+  position: absolute;
+  width: 90%;
+  left: 50%;
+  bottom: 20px;
+  margin-left: -45%;
+  
+  @media screen and (min-width: 940px) {
+    width: 50%;
+    left: 50%;
+    bottom: 40px;
+    margin-left: -25%;
+  }
+}

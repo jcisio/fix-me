@@ -1,0 +1,110 @@
+/**
+ * @file
+ * Views Styling
+ */
+/*
+ * Views' admin tabs
+ *
+ * The views admin tabs use the same classes as the secondary tabs. We prevent
+ * some of our tab styling from bleeding into (and breaking) the Views admin
+ * pages. If your sub-theme isn't used for admin pages, you can remove this
+ * entire section.
+ */
+/* line 18, ../sass/views-styles.scss */
+.views-displays .secondary li {
+  float: none;
+  margin: 0 6px 0;
+}
+/* line 24, ../sass/views-styles.scss */
+.views-displays .secondary a:link,
+.views-displays .secondary a:visited {
+  text-shadow: none;
+  padding: 2px 7px 3px;
+}
+/* line 29, ../sass/views-styles.scss */
+.views-displays .secondary .open > a {
+  -webkit-border-radius: 7px 7px 0 0;
+  -moz-border-radius: 7px 7px 0 0;
+  -ms-border-radius: 7px 7px 0 0;
+  -o-border-radius: 7px 7px 0 0;
+  border-radius: 7px 7px 0 0;
+}
+/* line 31, ../sass/views-styles.scss */
+.views-displays .secondary .open > a:hover {
+  color: #333;
+}
+/* line 36, ../sass/views-styles.scss */
+.views-displays .secondary .action-list li {
+  margin: 0;
+}
+/* line 38, ../sass/views-styles.scss */
+.views-displays .secondary .action-list li:first-child {
+  -webkit-border-radius: 0 7px 0 0;
+  -moz-border-radius: 0 7px 0 0;
+  -ms-border-radius: 0 7px 0 0;
+  -o-border-radius: 0 7px 0 0;
+  border-radius: 0 7px 0 0;
+}
+/* line 41, ../sass/views-styles.scss */
+.views-displays .secondary .action-list li:last-child {
+  -webkit-border-radius: 0 0 7px 7px;
+  -moz-border-radius: 0 0 7px 7px;
+  -ms-border-radius: 0 0 7px 7px;
+  -o-border-radius: 0 0 7px 7px;
+  border-radius: 0 0 7px 7px;
+}
+
+/* line 48, ../sass/views-styles.scss */
+.views-exposed-form {
+  margin-bottom: 44px;
+}
+
+/* line 52, ../sass/views-styles.scss */
+.views-exposed-form .views-exposed-widget .form-submit {
+  margin-top: 22px;
+}
+
+/* line 57, ../sass/views-styles.scss */
+#views-exposed-form-attendees-page .views-exposed-form .views-exposed-widget {
+  width: 25%;
+}
+/* line 60, ../sass/views-styles.scss */
+#views-exposed-form-attendees-page .views-exposed-form .views-exposed-widget .description {
+  display: none;
+}
+/* line 64, ../sass/views-styles.scss */
+#views-exposed-form-attendees-page .views-exposed-form .views-exposed-widget .form-submit {
+  margin-top: 0;
+}
+
+/* line 69, ../sass/views-styles.scss */
+.views-submit-button {
+  clear: both;
+}
+
+/* line 74, ../sass/views-styles.scss */
+.attendees {
+  text-align: center;
+}
+@media all and (min-width: 960px) {
+  /* line 77, ../sass/views-styles.scss */
+  .attendees > li {
+    width: 20%;
+  }
+}
+/* line 82, ../sass/views-styles.scss */
+.attendees > li .user-picture {
+  width: 100%;
+}
+
+/* line 89, ../sass/views-styles.scss */
+.sessions-list > li {
+  padding-bottom: 2em;
+  margin-bottom: 3em;
+  position: relative;
+}
+/* line 94, ../sass/views-styles.scss */
+.sessions-list > li .user-picture {
+  float: right;
+  margin: 0 0 20px 20px;
+}

@@ -1,0 +1,116 @@
+/**
+ * @file
+ * Print styling
+ *
+ * We provide some sane print styling for Drupal using Zen's layout method.
+ */
+
+@import "base";
+
+
+@media print {
+  body {
+    font-family: $helvetica;
+    font-size: 9pt;
+    line-height: 1.5em;
+  }
+  
+  a:link,
+  a:visited { /* underline all links */
+    color: $brown !important;
+    text-decoration: underline !important;
+    font-weight: normal;
+
+    #site-name & { /* Don't underline header */
+      text-decoration: none !important;
+    }
+  }
+  
+  #main {
+    padding-top: 0;
+  }
+  
+  th,
+  td {
+    padding: 5px 10px;
+  }
+
+  #content {
+    a[href]:after { /* Add visible URL after links. */
+      content: " (" attr(href) ")";
+      font-weight: normal;
+      font-size: $base-font-size;
+    }
+
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after { /* Only display useful links. */
+      content: "";
+    }
+
+    abbr[title]:after { /* Add visible title after abbreviations. */
+      content: " (" attr(title) ")";
+    }
+  }
+  
+  .page-user-orders {
+    h1 {
+      font-size: 24pt;
+    }
+    
+    #content a {
+      text-decoration: none;
+    
+      &:after {
+        display: none;
+      }
+    }
+    
+    .button,
+    .button-link {
+      display: none;
+    }  
+  }
+
+  #content { /* Un-float the content */
+    float: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body,
+  #page,
+  #main,
+  #content { /* Turn off any background colors or images */
+    color: #000;
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+  
+  #header,
+  #skip-link,
+  #toolbar,
+  #navigation,
+  .region-highlighted,
+  .region-sidebar-first,
+  .region-sidebar-second,
+  .region-bottom,
+  #footer,
+  .breadcrumb,
+  .tabs,
+  .action-links,
+  .links,
+  .book-navigation,
+  .forum-topic-navigation,
+  .pager,
+  .feed-icons,
+  .social-button,
+  .messages { /* Hide sidebars and nav elements */
+    visibility: hidden;
+    display: none;
+  }
+  
+  @page {
+    margin: 1cm;
+  }
+} /* End @media print */

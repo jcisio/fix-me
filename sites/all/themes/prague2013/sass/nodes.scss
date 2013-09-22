@@ -1,0 +1,106 @@
+/**
+ * @file
+ * Node Styling
+ *
+ * Style anything that isn't in the $content variable.
+ */
+
+@import "base";
+
+
+.node { /* Node wrapper */
+
+  .field-item > p:first-of-type:first-letter {
+  /*
+    font-family: $futura;
+    font-size: 4.65em;
+    float: left;
+    // This is doing very different things between FF and Webkit. Need to check others
+    margin: 0.3em 0.1em 0.06em 0;
+    */
+  }
+  
+  .preview & { /* Preview of the content before submitting new or updated content */
+    /* background-color: #ffffea; */ /* Drupal core uses a #ffffea background */
+  }
+
+  .node-title { /* Node title */
+  }
+
+  .user-picture { /* The picture of the node author */
+  }
+
+  .submitted { /* The "posted by" information */
+  }
+
+  .content { /* Node's content wrapper */
+  }
+
+  ul.links { /* Node links. See also the ul.links declaration in the pages.css. */
+    a {
+      font-size: $h5-font-size;
+    }
+  }
+
+}
+
+.node-promoted { /* A node that has been promoted to the front page */
+}
+
+.node-sticky { /* A sticky node (displayed before others in a list) */
+}
+
+.node-by-viewer { /* A node created by the current user */
+}
+
+.node-teaser { /* A node displayed as teaser */
+  padding-bottom: 2em;
+  margin-bottom: 3em;
+  position: relative;
+  
+  /*
+   * The writing style of the editorial team prefers very long headlines. In 
+   * order to mitigate against ugly H1s, I have recommended splitting them up
+   * into main and sub headings. This means that we will have 2x h2s on node
+   * teasers, so we need to set the second one to display like an h3 in order
+   * to maintain correct visual hierarchy.
+   */
+  .field-item.even > h2 {
+    font-size: $h4-font-size;
+    text-transform: none;
+    
+    @media all and (min-width: 1030px) {
+      font-size: $h3-font-size;
+    }
+  }
+    
+  ul.links {
+    display: none;
+  }
+}
+
+/*
+ * All nodes are given a node-FOO class that describes the type of content that
+ * it is. If you create a new content type called "my-custom-type", it will
+ * receive a "node-my-custom-type" class.
+ */
+
+.node-page { /* Page content node */
+}
+
+.node-article { /* Article content node */
+}
+
+.node-unpublished { /* Unpublished nodes */
+  /* background-color: #fff4f4; */ /* Drupal core uses a #fff4f4 background */
+
+  p.unpublished { /* The word "Unpublished" displayed underneath the content. */
+    @include unpublished-div;
+  }
+}
+
+// Share links
+.social-button {
+  float: left;
+  margin-right: 25px;
+}

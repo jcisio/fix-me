@@ -1,0 +1,98 @@
+/**
+ * @file
+ * Views Styling
+ */
+
+@import "base";
+
+
+/*
+ * Views' admin tabs
+ *
+ * The views admin tabs use the same classes as the secondary tabs. We prevent
+ * some of our tab styling from bleeding into (and breaking) the Views admin
+ * pages. If your sub-theme isn't used for admin pages, you can remove this
+ * entire section.
+ */
+.views-displays .secondary {
+  li {
+    float: none;
+    margin: 0 6px 0;
+  }
+
+  a:link,
+  a:visited {
+    @include single-text-shadow(none);
+    padding: 2px 7px 3px;
+  }
+
+  .open > a {
+    @include border-radius(7px 7px 0 0);
+    &:hover {
+      color: #333;
+    }
+  }
+
+  .action-list li {
+    margin: 0;
+    &:first-child {
+      @include border-radius(0 7px 0 0);
+    }
+    &:last-child {
+      @include border-radius(0 0 7px 7px);
+    }
+  }
+}
+
+// Exposed filters
+.views-exposed-form {
+  margin-bottom: 44px;
+}
+
+.views-exposed-form .views-exposed-widget .form-submit {
+  margin-top: 22px;
+}
+
+// Attendees exposed filters
+#views-exposed-form-attendees-page .views-exposed-form .views-exposed-widget {
+  width: 25%;
+  
+  .description {
+    display: none;
+  }
+  
+  .form-submit {
+    margin-top: 0;
+  }
+}
+
+.views-submit-button {
+  clear: both;
+}
+
+// Attendees list
+.attendees {
+  text-align: center;
+  
+  &> li {
+    @media all and (min-width: 960px) {
+      width: 20%;
+    }
+    
+    .user-picture {
+      width: 100%;
+    }
+  }
+}
+
+// Session listings
+.sessions-list > li {
+  padding-bottom: 2em;
+  margin-bottom: 3em;
+  position: relative;
+    
+  .user-picture {
+    float: right;
+    margin: 0 0 20px 20px;
+  }
+}
