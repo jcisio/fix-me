@@ -88,5 +88,43 @@ function fix_me_feature_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['system-main-menu'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'main-menu',
+    'module' => 'system',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'dcprg' => array(
+        'region' => 'navigation',
+        'status' => 1,
+        'theme' => 'dcprg',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'zen' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'zen',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   return $export;
 }

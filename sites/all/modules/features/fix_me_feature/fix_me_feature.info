@@ -21,6 +21,7 @@ features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[fe_block_settings][] = drupalcon_general-drupalcon_weather
 features[fe_block_settings][] = drupalcon_sessions-sessions
+features[fe_block_settings][] = system-main-menu
 features[features_api][] = api:2
 features[field_base][] = body
 features[field_base][] = field_date
