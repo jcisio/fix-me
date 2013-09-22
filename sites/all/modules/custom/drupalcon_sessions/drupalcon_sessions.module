@@ -47,7 +47,7 @@ function drupalcon_show_sessions_menu() {
   $content = '';
 
   if (!empty($results)) {
-    $nodes = node_load_multiple(array_keys($results['node']));
+    $nodes = node_load_multiple(array_keys($results['node'], array(), TRUE));
     $content = drupal_get_form('drupalcon_sessions_jumpmenu', $nodes);
   }
 
