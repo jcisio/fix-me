@@ -149,13 +149,13 @@
     <aside class="sidebars">
       <?php print $sidebar_first; ?>
       <?php print $sidebar_second; ?>
-      <?php print $sidebar_second_after; ?>
     </aside><!-- /.sidebars -->
   <?php endif; ?>
 
 </div><!-- /#main -->
 <div class="container">
   <?php print render($page['footer']); ?>
+  <?php print $sidebar_second_after; ?>
 </div>
 
 <?php print render($page['bottom']); ?>
