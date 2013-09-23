@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Fix me admin view feature.
+ */
+
+include_once 'fix_me_admin_view_feature.features.inc';

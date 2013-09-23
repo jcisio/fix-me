@@ -34,6 +34,7 @@
       print render($content);
     ?>
   </div>
+  <?php print $tags; ?>
 
 
   <?php print render($content['comments']); ?>

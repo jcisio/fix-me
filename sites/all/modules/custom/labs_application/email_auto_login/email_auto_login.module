@@ -1,0 +1,116 @@
+<?php
+
+/**
+ * Implements hook_mail_alter().
+ */
+function email_auto_login_mail_alter(&$message) {
+  
+  global $base_url;
+  global $l_token;
+  $user = user_load_by_mail($message['to']);
+
+  if(!isset($user->uid)) return;
+
+  $l_token = _email_auto_login_generate_token($user->uid);
+
+  $ltrs = '\w';
+  $gunk = '/#~:.?+=&%@!\-';
+  $punc = '.:?\-';
+  $any = "{$ltrs}{$gunk}{$punc}";
+  $regex = "{
+    \b{$base_url}
+    [{$any}] +?
+    (?= [{$punc}]*
+    [^{$any}] |
+    \$
+    )
+    }x";
+  
+  $message['body'][0] = preg_replace_callback($regex, '_email_auto_login_add_token', $message['body'][0]);
+  
+} 
+
+function _email_auto_login_add_token(&$url) {
+  
+  global $l_token;
+  global $base_url;
+  $url = $url[0];
+  $url_array = parse_url($url);
+  $base_array = parse_url($base_url);
+  if($url_array['host'] == $base_array['host']) {
+
+    if(isset($url_array['query']))
+      $url_array['query'] .= '&l=' . $l_token;
+    else
+      $url_array['query'] .= 'l=' . $l_token;
+
+    if (!function_exists('http_build_url')) {
+      module_load_include('inc', 'email_auto_login', 'http_build_url');
+    return http_build_url('',$url_array);
+  } else
+  {
+    return $url;
+  }
+}
+
+/**
+ * Implements hook_init().
+ */
+function email_auto_login_init() {
+
+  global $user;
+
+  if (isset($_GET['l']) && ($user->uid == 0) ){
+    
+    $select = db_select('email_auto_login_tokens')
+      ->fields('email_auto_login_tokens')
+      ->condition('token',md5($_GET['l']))
+      ->execute()->fetchAll();
+
+      $user = user_load($select[0]->uid);
+    
+    db_delete('email_auto_login_tokens')
+      ->condition('token',md5($_GET['l']))
+      ->execute();
+
+      $form_state['uid'] = $user->uid;
+      user_login_submit(array(), $form_state);
+
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function email_auto_login_cron() {
+
+   db_delete('email_auto_login_tokens')
+    ->condition('created', REQUEST_TIME - 30*24*60*60, '<' )
+    ->execute();
+} 
+
+function _email_auto_login_generate_token($uid) {
+  $return_value = NULL;
+  //Rand is an insecure salt, use a better one.
+  $salt = rand(1,1E19);
+  //We deliberately apply MD5 twice below- this means if someone hacks our database they cannot retrieve tokens.
+  $l_token = md5($salt);
+
+  $entry = array(
+    'uid' => $uid,
+    'created' => REQUEST_TIME,
+    'token' => md5($l_token),
+    );
+
+  try {
+    $return_value = db_insert('email_auto_login_tokens')
+                    ->fields($entry)
+                    ->execute();
+  }
+  catch (Exception $e) {
+    watchdog(t('db_insert failed. Message = %message, query= %query',
+      array('%message' => $e->getMessage(), '%query' => $e->query_string)), 'error');
+  }
+  
+return $l_token;
+}

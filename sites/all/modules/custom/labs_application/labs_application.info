@@ -1,0 +1,5 @@
+name = Labs application
+description = Examples for application section.
+
+core = 7.x
+package = Fix me
