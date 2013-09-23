@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function email_auto_login_uninstall() {
+  schema_uninstall('email_auto_login_schema');
+}
+/**
+ * Implements hook_schema().
+ */
+function email_auto_login_schema() {
+  /*
+   *$schema['node'] = array(
+   *  // example (partial) specification for table "node"
+   *  'description' => 'The base table for nodes.',
+   *  'fields' => array(
+   *    'nid' => array(
+   *      'description' => 'The primary identifier for a node.',
+   *      'type' => 'serial',
+   *      'unsigned' => TRUE,
+   *      'not null' => TRUE),
+   *    'vid' => array(
+   *      'description' => 'The current {node_revision}.vid version identifier.',
+   *      'type' => 'int',
+   *      'unsigned' => TRUE,
+   *      'not null' => TRUE,
+   *      'default' => 0),
+   *    'type' => array(
+   *      'description' => 'The {node_type} of this node.',
+   *      'type' => 'varchar',
+   *      'length' => 32,
+   *      'not null' => TRUE,
+   *      'default' => ''),
+   *    'title' => array(
+   *      'description' => 'The title of this node, always treated as non-markup plain text.',
+   *      'type' => 'varchar',
+   *      'length' => 255,
+   *      'not null' => TRUE,
+   *      'default' => ''),
+   *    ),
+   *  'indexes' => array(
+   *    'node_changed'        => array('changed'),
+   *    'node_created'        => array('created'),
+   *    ),
+   *  'unique keys' => array(
+   *    'nid_vid' => array('nid', 'vid'),
+   *    'vid'     => array('vid')
+   *    ),
+   *  'foreign keys' => array(
+   *    'node_revision' => array(
+   *      'table' => 'node_revision',
+   *      'columns' => array('vid' => 'vid'),
+   *      ),
+   *    'node_author' => array(
+   *      'table' => 'users',
+   *      'columns' => array('uid' => 'uid')
+   *      ),
+   *     ),
+   *  'primary key' => array('nid'),
+   *);
+   */
+	$schema['email_auto_login_tokens'] = array(
+    'description' => 'List of valid tokens used for email auto login',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Token Id (primary Key)',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        ),
+      'uid' => array(
+        'description' => 'The user ID of who this token belongs to',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        ),
+      'token' => array(
+        'description' => 'The authentication token',
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        ),
+      'created' => array(
+        'description' => 'Timestamp of creation',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        ),
+      ),
+
+    'indexes' => array(
+      'token' => array('token'),
+      ),
+    'foreign keys' => array(
+      'user' => array(
+        'table' => 'user',
+        'columns' => array('uid' => 'uid'),
+        ),
+       ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}

@@ -1,0 +1,4 @@
+name = Email Auto Login
+description = When emails are sent to a user, if they click on the links that bring them back to the website, they are logged in automatically.
+package = WikiJob
+core = 7.x
