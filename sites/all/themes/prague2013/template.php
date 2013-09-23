@@ -236,3 +236,13 @@ function dcprg_preprocess_page(&$variables, $hook) {
   }
 
 }
+
+function dcprg_preprocess_node(&$variables) {
+  $tags = $variables['node']->field_tags['und'];
+
+  foreach ($tags as $term) {
+    $terms[] = $term['taxonomy_term']->name;
+  }
+
+  $variables['tags'] = implode(',', $terms);
+}
