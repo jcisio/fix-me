@@ -7,32 +7,36 @@
 include_once 'fixme_sec_feature.features.inc';
 
 /**
- * Implementation of hook_menu().
+ * Implements  hook_menu().
  */
 function fixme_sec_feature_menu() {
   $items = array();
   $items['show/node'] = array(
     'page callback' => 'fixme_sec_sql_injection',
     'access arguments' => array('access content'),
-  );                           
-  return $items;               
+  );
+  return $items;
 }
 
+
+/**
+ * SQL Injection vulnerable callback.
+ */
 function fixme_sec_sql_injection() {
   $output = '';
 
-  if (isset($_GET['nid'])) { 
-    $nid = $_GET['nid'];         
-    $r = db_query("SELECT nid, title, status FROM {node} WHERE status = 1 AND nid = $nid"); 
-  
-    $rows = array();             
-    foreach ($r as $node) {      
+  if (isset($_GET['nid'])) {
+    $nid = $_GET['nid'];
+    $r = db_query("SELECT nid, title, status FROM {node} WHERE status = 1 AND nid = $nid");
+
+    $rows = array();
+    foreach ($r as $node) {
       $l = l($node->title, 'node/' . $node->nid);
       $rows[] = array($l, $node->status);
     }
-    
-    $output = theme_table(array( 
-      'header' => array(),       
+
+    $output = theme_table(array(
+      'header' => array(),
       'rows' => $rows,
       'attributes' => array(),
       'caption' => '',
