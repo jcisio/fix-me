@@ -226,6 +226,9 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
 // */
 
 
+/**
+ * Implements THEME_preprocess_page().
+ */
 function dcprg_preprocess_page(&$variables, $hook) {
   // When a variable is manipulated or added in preprocess_html or
   // preprocess_page, that same work is probably needed for the maintenance page
@@ -237,7 +240,15 @@ function dcprg_preprocess_page(&$variables, $hook) {
 
 }
 
+/**
+ * Implements THEME_preprocess_node().
+ */
 function dcprg_preprocess_node(&$variables) {
+  
+  if (empty($variables['node']->field_tags)) {
+    return;
+  }
+
   $tags = $variables['node']->field_tags['und'];
 
   foreach ($tags as $term) {

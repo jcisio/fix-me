@@ -34,7 +34,10 @@
       print render($content);
     ?>
   </div>
-  <?php print $tags; ?>
+  <?php if(isset($tags)) {
+          print $tags;
+        }
+  ?>
 
 
   <?php print render($content['comments']); ?>
