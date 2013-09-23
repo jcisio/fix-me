@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Fix Me unprotected files feature.
+ */
+
+include_once 'fix_me_unprotected_files_feature.features.inc';

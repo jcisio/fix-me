@@ -1,0 +1,9 @@
+name = Fix Me unprotected files
+core = 7.x
+package = Features
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = file_private_path
+features[variable][] = file_public_path
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][strongarm] = strongarm
