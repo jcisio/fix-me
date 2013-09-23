@@ -6,4 +6,5 @@ package = Fix me
 
 dependencies[] = hacked
 dependencies[] = coder_review
+dependencies[] = diff
 
