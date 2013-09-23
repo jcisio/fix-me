@@ -1,0 +1,9 @@
+name = Fixme Sec Feature
+core = 7.x
+package = Features
+dependencies[] = features
+dependencies[] = total_control
+dependencies[] = views
+features[features_api][] = api:2
+features[user_permission][] = access all views
+features[user_permission][] = have total control
