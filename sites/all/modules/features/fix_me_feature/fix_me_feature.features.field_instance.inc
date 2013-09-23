@@ -244,43 +244,6 @@ function fix_me_feature_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-drupalcons-field_location'
-  $field_instances['node-drupalcons-field_location'] = array(
-    'bundle' => 'drupalcons',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'location_cck',
-        'settings' => array(),
-        'type' => 'location_default',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_location',
-    'label' => 'Location',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'location_cck',
-      'settings' => array(),
-      'type' => 'location',
-      'weight' => -1,
-    ),
-  );
-
   // Exported field_instance: 'node-drupalistas-body'
   $field_instances['node-drupalistas-body'] = array(
     'bundle' => 'drupalistas',
@@ -692,7 +655,6 @@ function fix_me_feature_field_default_field_instances() {
   t('Drupalcon');
   t('Enter a comma-separated list of words to describe your content.');
   t('Image');
-  t('Location');
   t('Presenter');
   t('Tags');
   t('Upload an image to go with this article.');

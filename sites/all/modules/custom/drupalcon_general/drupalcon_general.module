@@ -56,7 +56,67 @@ function drupalcon_general_menu() {
     'description' => 'Configure aspects of the Drupalcon Website'
   );
 
+  $items['user/%user/commits'] = array(
+    'page callback' => 'drupalcon_user_commits',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'title' => 'Drupal commits',
+    'description' => 'Drupal commits',
+    'type' => MENU_LOCAL_TASK
+  );
+  
   return $items;
+}
+
+function drupalcon_user_commits($user) {
+  // our data is in an external database 
+  
+  $bad_query = "select SQL_NO_CACHE * from drupal_external_data.commits
+                 left outer join drupal_external_data.modules on modules.module = commits.module
+                 left outer join drupal_external_data.users on users.user = commits.maintainer
+                 left outer join drupal_external_data.users u2 on u2.user = commits.maintainer
+                 left outer join drupal_external_data.users u3 on u3.user = commits.maintainer
+                 left outer join drupal_external_data.users u4 on u4.user = commits.maintainer
+                 left outer join drupal_external_data.users u5 on u5.user = commits.maintainer
+                 where commits.maintainer = :user and commits.module is not NULL
+                 order by commits.date";
+  
+  $good_query = "select SQL_NO_CACHE * from commits USE INDEX (maintainer)
+                 inner join modules  on modules.module = commits.module
+                 inner join users on users.user = commits.maintainer
+                 where commits.maintainer = 'demo'
+                 order by commits.date
+                 limit 0,100";
+
+ 
+  if ($user->uid == 1) {
+    $user_query = $good_query;
+  }
+  else {
+    $user_query = $bad_query;
+  }
+
+  $i = 0;
+  $rows = array();
+  $results = db_query($user_query, array(':user' => $user->name), array('target' => 'drupal_external_data'));
+  foreach($results as $res) {
+    // just 100 first rows
+    if ($i < 100) {
+      $rows[] = array($res->maintainer, $res->module, format_date($res->date));
+    }
+    $i++;  
+  }
+
+  $header = array( 
+    array('data' => t('User')),  
+    // second cell 
+    array('data' => t('Module')), 
+    // and third cell 
+    array('data' => t('Date'))); 
+
+  $content = theme('table', array('header' => $header, 'rows' => $rows));
+
+  return $content;
 }
 
 function drupalcon_config_form($form, $form_state) {
