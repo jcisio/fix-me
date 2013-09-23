@@ -1,0 +1,25 @@
+<?php
+
+
+function labs_application_block_info() {
+
+  $blocks['php_config'] = array(
+    'info' => t('PHP configuration tweaks'),
+    'status' => TRUE,
+    'region' => 'header',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'node/1',
+  );
+
+  return $blocks;
+}
+
+function labs_application_block_view($delta = '') {
+
+  $block['subject'] = '<none>';
+  $block['content'] = '';
+
+  ini_set('memory_limit', '128K');
+
+  return $block;
+}
