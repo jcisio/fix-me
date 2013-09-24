@@ -254,7 +254,7 @@ function dcprg_preprocess_node(&$variables) {
 
   foreach ($tags as $term) {
     if (isset($term['taxonomy_term'])) {
-      $terms[] = $term['taxonomy_term']->name;
+      $terms[] = check_plain($term['taxonomy_term']->name);
     }
   }
 
