@@ -27,8 +27,7 @@ function fixme_sec_sql_injection() {
 
   if (isset($_GET['nid'])) {
     $nid = $_GET['nid'];
-    $r = db_query("SELECT nid, title, status FROM {node} WHERE status = 1 AND nid = $nid");
-    #$r = db_query("SELECT nid, title, status FROM {node} WHERE status = 1 AND nid = :nid", array(':nid' => $nid));
+    $r = db_query("SELECT nid, title, status FROM {node} WHERE status = 1 AND nid = :nid", array(':nid' => $nid));
 
     $rows = array();
     foreach ($r as $node) {
